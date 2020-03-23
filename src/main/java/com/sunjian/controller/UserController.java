@@ -15,35 +15,35 @@ public class UserController {
     private UserService userService;
 
     @GetMapping("/index")
-    public ModelAndView index(){
+    public ModelAndView index() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("index");
-        modelAndView.addObject("list",userService.findAll());
+        modelAndView.addObject("list", userService.findAll());
         return modelAndView;
     }
 
     @PostMapping("/add")
-    public String add(User user){
+    public String add(User user) {
         userService.add(user);
         return "redirect:/index";
     }
 
     @GetMapping("/deleteById")
-    public String deleteById(Long id){
+    public String deleteById(Long id) {
         userService.deleteById(id);
         return "redirect:/index";
     }
 
     @GetMapping("/findById")
-    public ModelAndView findById(Long id){
+    public ModelAndView findById(Long id) {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("update");
-        modelAndView.addObject("user",userService.findById(id));
+        modelAndView.addObject("user", userService.findById(id));
         return modelAndView;
     }
 
     @PostMapping("/update")
-    public String update(User user){
+    public String update(User user) {
         userService.update(user);
         return "redirect:/index";
     }
